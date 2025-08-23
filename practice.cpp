@@ -343,41 +343,121 @@
 
 // Hybrid Inheritance
 
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Person{
+// public:    
+//     string name;
+//     int age;
+// };
+
+// class Student : public Person{
+// public:    
+//     int rollno; 
+// };
+
+// class Teacher : public Person{
+// public:
+//     string subject;
+//     double salary;
+// };
+
+// class gradStudent : public Student{
+// public:
+//     string researchArea;
+// };
+
+// class TA : public Student, public Teacher{
+
+// };
+
+// int main(){
+//     TA t1;
+//     t1.Student::name = "Mihran";
+//     t1.Teacher::subject = "Data Structure and Algorithm";
+//     cout<<"Name : "<<t1.Student::name<<endl;
+//     cout<<"Subject : "<<t1.Teacher::subject<<endl;
+//     return 0;
+// }
+
+// Polymorphism : It is the ability of an object to take on different formsor behave
+// in different ways depending on the context in which they are used.
+
+
+//Polymorphism (Constructor Overloading) [Compile Time Polymorphism]
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Student{
+// public:
+//     string name;
+//     int age;
+
+//     Student(){
+//         cout<<"Non-Parameterized Constructor"<<endl;
+//     }
+
+//     Student(string name, int age){
+//         this->name = name;
+//         this->age = age;
+//         cout<<"Parameteraized Constructor"<<endl;
+//     }
+// };
+
+// int main(){
+//     Student s1;
+//     Student s2("Mihran", 17);
+//     return 0;
+// }
+
+
+//Polymorphism (Function Overloading)  [Compile Time Polymorphism]
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Print{
+// public:
+//     void show(int x){
+//         cout<<"Integer : "<<x<<endl;
+//     }
+//     void show(char ch){
+//         cout<<"Character : "<<ch<<endl;
+//     }
+// };
+
+// int main(){
+//     Print p1;
+//     p1.show(52);
+//     p1.show('&');
+//     return 0;
+// }
+
+// Polymorphism (Function Overriding) [Run Time Polymorphism]
+
 #include<iostream>
 #include<string>
 using namespace std;
 
-class Person{
-public:    
-    string name;
-    int age;
-};
-
-class Student : public Person{
-public:    
-    int rollno; 
-};
-
-class Teacher : public Person{
+class Parent{
 public:
-    string subject;
-    double salary;
+    void getInfo(){
+        cout<<"Parent Class"<<endl;
+    }
 };
 
-class gradStudent : public Student{
+class Child : public Parent{
 public:
-    string researchArea;
-};
-
-class TA : public Student, public Teacher{
-
+    void getInfo(){
+        cout<<"Child Class"<<endl;
+    }
 };
 
 int main(){
-    TA t1;
-    t1.Student::name = "Mihran";
-    t1.Teacher::subject = "Data Structure and Algorithm";
-    cout<<"Name : "<<t1.Student::name<<endl;
-    cout<<"Subject : "<<t1.Teacher::subject<<endl;
+    Child c1;
+    c1.getInfo();
     return 0;
 }
