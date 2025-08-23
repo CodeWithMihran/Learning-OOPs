@@ -62,58 +62,106 @@
 // }
 
 
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Teacher{
+//     private:
+//     double salary;
+
+//     public:
+//     string name;
+//     string dept;
+//     string subject;
+
+//     // non-parameterized constructor
+//     Teacher(){
+//         dept = "Computer Science";
+//     }
+
+//     // Paramerterized Constructor
+//     Teacher(string name, string dept, string subject, double salary){
+//         this->name = name;
+//         this->dept = dept;
+//         this->subject = subject;
+//         this->salary = salary;
+//     }
+//     // Countructor Overloading : More than one constructor (Also an example of Polymorphism).
+
+//     // Copy Constructor
+//     Teacher(Teacher &orjObject){
+//         cout<<"I am a custom copy constructor."<<endl;
+//         this->name = orjObject.name;
+//         this->dept = orjObject.dept;
+//         this->subject = orjObject.subject;
+//         this->salary = orjObject.salary;
+//     }
+
+//     void changeDept(string newDept){
+//         dept = newDept;
+//     }
+
+//     void getInfo(){
+//         cout<<"Name : "<<name<<endl;
+//         cout<<"Department : "<<dept<<endl;
+//         cout<<"Subject : "<<subject<<endl;
+//         cout<<"Salary : "<<salary<<endl;
+//     }
+// };
+
+// int main(){
+//     Teacher t1("Mihran", "Computer Science", "C++", 2500);
+//     // t1.getInfo();
+//     Teacher t2(t1); // Default Copy Constructor-invoke
+//     t2.getInfo();
+//     return 0;
+// }
+
 #include<iostream>
 #include<string>
 using namespace std;
 
-class Teacher{
-    private:
-    double salary;
-
-    public:
+class Student{
+public:    
     string name;
-    string dept;
-    string subject;
+    double* cgpaPtr;
 
-    // non-parameterized constructor
-    Teacher(){
-        dept = "Computer Science";
-    }
-
-    // Paramerterized Constructor
-    Teacher(string name, string dept, string subject, double salary){
+    Student(string name, double cgpa){
         this->name = name;
-        this->dept = dept;
-        this->subject = subject;
-        this->salary = salary;
-    }
-    // Countructor Overloading : More than one constructor (Also an example of Polymorphism).
-
-    // Copy Constructor
-    Teacher(Teacher &orjObject){
-        cout<<"I am a custom copy constructor."<<endl;
-        this->name = orjObject.name;
-        this->dept = orjObject.dept;
-        this->subject = orjObject.subject;
-        this->salary = orjObject.salary;
+        cgpaPtr = new double;
+        *cgpaPtr = cgpa;
     }
 
-    void changeDept(string newDept){
-        dept = newDept;
+    // Shallow Copy Constructor
+    // Student(Student &orgStudent){
+    //     cout<<"Shallow Copy Constructor"<<endl;
+    //     this->name = orgStudent.name;
+    //     this->cgpaPtr = orgStudent.cgpaPtr;
+    // }
+
+    // Deep Copy Constructor
+    Student(Student &orgStudent){
+        cout<<"Deep Copy Constructor"<<endl;
+        this->name = orgStudent.name;
+        cgpaPtr = new double;
+        *cgpaPtr = *orgStudent.cgpaPtr;
     }
 
     void getInfo(){
         cout<<"Name : "<<name<<endl;
-        cout<<"Department : "<<dept<<endl;
-        cout<<"Subject : "<<subject<<endl;
-        cout<<"Salary : "<<salary<<endl;
+        cout<<"CGPA : "<<*(cgpaPtr)<<endl;
     }
 };
 
 int main(){
-    Teacher t1("Mihran", "Computer Science", "C++", 2500);
-    // t1.getInfo();
-    Teacher t2(t1); // Default Copy Constructor-invoke
-    t2.getInfo();
+    Student s1("Rahul Kumar", 8.9);
+    Student s2(s1);
+    s1.getInfo();
+    *(s2.cgpaPtr) = 9.2;
+    s1.getInfo();
+
+    s2.name = "Neha Kumari";
+    s2.getInfo();
     return 0;
 }
