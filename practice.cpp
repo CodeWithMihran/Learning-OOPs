@@ -118,6 +118,54 @@
 //     return 0;
 // }
 
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Student{
+// public:    
+//     string name;
+//     double* cgpaPtr;
+
+//     Student(string name, double cgpa){
+//         this->name = name;
+//         cgpaPtr = new double;
+//         *cgpaPtr = cgpa;
+//     }
+
+//     // Shallow Copy Constructor
+//     // Student(Student &orgStudent){
+//     //     cout<<"Shallow Copy Constructor"<<endl;
+//     //     this->name = orgStudent.name;
+//     //     this->cgpaPtr = orgStudent.cgpaPtr;
+//     // }
+
+//     // Deep Copy Constructor
+//     Student(Student &orgStudent){
+//         cout<<"Deep Copy Constructor"<<endl;
+//         this->name = orgStudent.name;
+//         cgpaPtr = new double;
+//         *cgpaPtr = *orgStudent.cgpaPtr;
+//     }
+
+//     void getInfo(){
+//         cout<<"Name : "<<name<<endl;
+//         cout<<"CGPA : "<<*(cgpaPtr)<<endl;
+//     }
+// };
+
+// int main(){
+//     Student s1("Rahul Kumar", 8.9);
+//     Student s2(s1);
+//     s1.getInfo();
+//     *(s2.cgpaPtr) = 9.2;
+//     s1.getInfo();
+
+//     s2.name = "Neha Kumari";
+//     s2.getInfo();
+//     return 0;
+// }
+
 #include<iostream>
 #include<string>
 using namespace std;
@@ -133,19 +181,10 @@ public:
         *cgpaPtr = cgpa;
     }
 
-    // Shallow Copy Constructor
-    // Student(Student &orgStudent){
-    //     cout<<"Shallow Copy Constructor"<<endl;
-    //     this->name = orgStudent.name;
-    //     this->cgpaPtr = orgStudent.cgpaPtr;
-    // }
-
-    // Deep Copy Constructor
-    Student(Student &orgStudent){
-        cout<<"Deep Copy Constructor"<<endl;
-        this->name = orgStudent.name;
-        cgpaPtr = new double;
-        *cgpaPtr = *orgStudent.cgpaPtr;
+    // Destructor
+    ~Student(){
+        cout<<"I am Destructor, I delete everything..."<<endl;
+        delete cgpaPtr;
     }
 
     void getInfo(){
@@ -156,12 +195,6 @@ public:
 
 int main(){
     Student s1("Rahul Kumar", 8.9);
-    Student s2(s1);
     s1.getInfo();
-    *(s2.cgpaPtr) = 9.2;
-    s1.getInfo();
-
-    s2.name = "Neha Kumari";
-    s2.getInfo();
     return 0;
 }
