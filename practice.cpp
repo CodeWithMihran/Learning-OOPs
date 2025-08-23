@@ -166,35 +166,79 @@
 //     return 0;
 // }
 
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Student{
+// public:    
+//     string name;
+//     double* cgpaPtr;
+
+//     Student(string name, double cgpa){
+//         this->name = name;
+//         cgpaPtr = new double;
+//         *cgpaPtr = cgpa;
+//     }
+
+//     // Destructor
+//     ~Student(){
+//         cout<<"I am Destructor, I delete everything..."<<endl;
+//         delete cgpaPtr;
+//     }
+
+//     void getInfo(){
+//         cout<<"Name : "<<name<<endl;
+//         cout<<"CGPA : "<<*(cgpaPtr)<<endl;
+//     }
+// };
+
+// int main(){
+//     Student s1("Rahul Kumar", 8.9);
+//     s1.getInfo();
+//     return 0;
+// }
+
 #include<iostream>
 #include<string>
 using namespace std;
 
-class Student{
+class Person{
 public:    
     string name;
-    double* cgpaPtr;
+    int age;
 
-    Student(string name, double cgpa){
+    Person(string name, int age){
+        cout<<"I am Base Constructor"<<endl;
         this->name = name;
-        cgpaPtr = new double;
-        *cgpaPtr = cgpa;
+        this->age = age;
     }
+    ~Person(){
+        cout<<"I am Base Distructor"<<endl;
+    }
+};
 
-    // Destructor
-    ~Student(){
-        cout<<"I am Destructor, I delete everything..."<<endl;
-        delete cgpaPtr;
-    }
+class Student : public Person {
+public:    
+    int rollno;
+
+    Student(string name, int age, int rollno): Person(name,age){
+        cout<<"I am constructor."<<endl;
+        this->rollno = rollno;
+    } 
 
     void getInfo(){
         cout<<"Name : "<<name<<endl;
-        cout<<"CGPA : "<<*(cgpaPtr)<<endl;
+        cout<<"Age : "<<age<<endl;
+        cout<<"Roll No. : "<<rollno<<endl;
+    }
+    ~Student(){
+        cout<<"I am Distructor"<<endl;
     }
 };
 
 int main(){
-    Student s1("Rahul Kumar", 8.9);
+    Student s1("Mihran", 17, 1233);
     s1.getInfo();
     return 0;
 }
