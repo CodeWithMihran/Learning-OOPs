@@ -199,6 +199,150 @@
 //     return 0;
 // }
 
+// INHERITANCE
+
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Person{
+// public:    
+//     string name;
+//     int age;
+
+//     Person(string name, int age){
+//         cout<<"I am Base Constructor"<<endl;
+//         this->name = name;
+//         this->age = age;
+//     }
+//     ~Person(){
+//         cout<<"I am Base Distructor"<<endl;
+//     }
+// };
+
+// class Student : public Person {
+// public:    
+//     int rollno;
+
+//     Student(string name, int age, int rollno): Person(name,age){
+//         cout<<"I am constructor."<<endl;
+//         this->rollno = rollno;
+//     } 
+
+//     void getInfo(){
+//         cout<<"Name : "<<name<<endl;
+//         cout<<"Age : "<<age<<endl;
+//         cout<<"Roll No. : "<<rollno<<endl;
+//     }
+//     ~Student(){
+//         cout<<"I am Distructor"<<endl;
+//     }
+// };
+
+// int main(){
+//     Student s1("Mihran", 17, 1233);
+//     s1.getInfo();
+//     return 0;
+// }
+
+// Types of Inheritance :
+// Multi-Level Inheritance
+
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Person{
+// public:    
+//     string name;
+//     int age;
+// };
+
+// class Student : public Person{
+// public:    
+//     int rollno; 
+// };
+
+// class gradStudent : public Student{
+// public:
+//     string researchArea;
+// };
+
+// int main(){
+//     gradStudent g1;
+//     g1.name = "Mihran";
+//     g1.researchArea = "Quantam Mechanics";
+//     cout<<"Name : "<<g1.name<<endl;
+//     cout<<"Reaserch Area : "<<g1.researchArea<<endl;
+//     return 0;
+// }
+
+// Multiple Inheritance
+
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Student{
+// public:    
+//     string name;
+//     int rollno; 
+// };
+
+// class Teacher{
+// public:
+//     string subject;
+//     double salary;
+// };
+
+// class TA : public Student, public Teacher{
+
+// };
+
+// int main(){
+    // TA t1;
+    // t1.name = "Mihran";
+    // t1.subject = "Data Structure and Algorithm";
+    // cout<<"Name : "<<t1.name<<endl;
+    // cout<<"Subject : "<<t1.subject<<endl;
+    // return 0;
+// }
+
+// Hierarchial Inheritance
+
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Person{
+// public:    
+//     string name;
+//     int age;
+// };
+
+// class Student : public Person{
+// public:    
+//     int rollno; 
+// };
+
+// class Teacher : public Person{
+// public:
+//     string dept;
+//     double salary;
+// };
+
+// int main(){
+//     Teacher t1;
+//     t1.name = "Abhishek Singh";
+//     t1.dept = "Comuter Science";
+//     cout<<"Name : "<<t1.name<<endl;
+//     cout<<"Department : "<<t1.dept<<endl;
+//     return 0;
+// }
+
+
+// Hybrid Inheritance
+
 #include<iostream>
 #include<string>
 using namespace std;
@@ -207,38 +351,33 @@ class Person{
 public:    
     string name;
     int age;
-
-    Person(string name, int age){
-        cout<<"I am Base Constructor"<<endl;
-        this->name = name;
-        this->age = age;
-    }
-    ~Person(){
-        cout<<"I am Base Distructor"<<endl;
-    }
 };
 
-class Student : public Person {
+class Student : public Person{
 public:    
-    int rollno;
+    int rollno; 
+};
 
-    Student(string name, int age, int rollno): Person(name,age){
-        cout<<"I am constructor."<<endl;
-        this->rollno = rollno;
-    } 
+class Teacher : public Person{
+public:
+    string subject;
+    double salary;
+};
 
-    void getInfo(){
-        cout<<"Name : "<<name<<endl;
-        cout<<"Age : "<<age<<endl;
-        cout<<"Roll No. : "<<rollno<<endl;
-    }
-    ~Student(){
-        cout<<"I am Distructor"<<endl;
-    }
+class gradStudent : public Student{
+public:
+    string researchArea;
+};
+
+class TA : public Student, public Teacher{
+
 };
 
 int main(){
-    Student s1("Mihran", 17, 1233);
-    s1.getInfo();
+    TA t1;
+    t1.Student::name = "Mihran";
+    t1.Teacher::subject = "Data Structure and Algorithm";
+    cout<<"Name : "<<t1.Student::name<<endl;
+    cout<<"Subject : "<<t1.Teacher::subject<<endl;
     return 0;
 }
