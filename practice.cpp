@@ -498,23 +498,62 @@
 
 // Abstraction
 
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Shape{ // abstract class
+//     virtual void draw() = 0; // pure virtual function
+// }; 
+
+// class Circle : public Shape{
+// public:
+//     void draw(){
+//         cout<<"Drawing a Circle"<<endl;
+//     }
+// };
+
+// int main(){
+//     Circle c1;
+//     c1.draw();
+//     return 0;
+// }
+
+// Static Keyword
+
+// #include<iostream>
+// using namespace std;
+
+// void fun(){
+//     static int x = 0;
+//     cout<<x<<endl;
+//     x++;
+// }
+
+// int main(){
+//     fun();
+//     fun();
+//     fun();
+//     return 0;
+// }
+
 #include<iostream>
-#include<string>
 using namespace std;
 
-class Shape{ // abstract class
-    virtual void draw() = 0; // pure virtual function
-}; 
-
-class Circle : public Shape{
+class ABC{
 public:
-    void draw(){
-        cout<<"Drawing a Circle"<<endl;
+    ABC(){
+        cout<<"Constructor"<<endl;
+    }
+    ~ABC(){
+        cout<<"Distructor"<<endl;
     }
 };
 
 int main(){
-    Circle c1;
-    c1.draw();
+    if(true){
+        static ABC a1;
+    }
+    cout<<"End of amin function"<<endl;
     return 0;
 }
