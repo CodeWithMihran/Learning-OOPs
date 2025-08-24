@@ -464,33 +464,57 @@
 
 // Virtual Function
 
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Parent{
+// public:
+//     void getInfo(){
+//         cout<<"Parent Class"<<endl;
+//     }
+
+//     virtual void hello(){
+//         cout<<"Hello Parent Class"<<endl;
+//     }
+// };
+
+// class Child : public Parent{
+// public:
+//     void getInfo(){
+//         cout<<"Child Class"<<endl;
+//     }
+//     void hello(){
+//         cout<<"Hello Child Class"<<endl;
+//     }
+// };
+
+// int main(){
+//     Child c1;
+//     c1.hello();
+//     return 0;
+// }
+
+
+// Abstraction
+
 #include<iostream>
 #include<string>
 using namespace std;
 
-class Parent{
-public:
-    void getInfo(){
-        cout<<"Parent Class"<<endl;
-    }
+class Shape{ // abstract class
+    virtual void draw() = 0; // pure virtual function
+}; 
 
-    virtual void hello(){
-        cout<<"Hello Parent Class"<<endl;
-    }
-};
-
-class Child : public Parent{
+class Circle : public Shape{
 public:
-    void getInfo(){
-        cout<<"Child Class"<<endl;
-    }
-    void hello(){
-        cout<<"Hello Child Class"<<endl;
+    void draw(){
+        cout<<"Drawing a Circle"<<endl;
     }
 };
 
 int main(){
-    Child c1;
-    c1.hello();
+    Circle c1;
+    c1.draw();
     return 0;
 }
