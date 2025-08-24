@@ -438,6 +438,32 @@
 
 // Polymorphism (Function Overriding) [Run Time Polymorphism]
 
+// #include<iostream>
+// #include<string>
+// using namespace std;
+
+// class Parent{
+// public:
+//     void getInfo(){
+//         cout<<"Parent Class"<<endl;
+//     }
+// };
+
+// class Child : public Parent{
+// public:
+//     void getInfo(){
+//         cout<<"Child Class"<<endl;
+//     }
+// };
+
+// int main(){
+//     Child c1;
+//     c1.getInfo();
+//     return 0;
+// }
+
+// Virtual Function
+
 #include<iostream>
 #include<string>
 using namespace std;
@@ -447,6 +473,10 @@ public:
     void getInfo(){
         cout<<"Parent Class"<<endl;
     }
+
+    virtual void hello(){
+        cout<<"Hello Parent Class"<<endl;
+    }
 };
 
 class Child : public Parent{
@@ -454,10 +484,13 @@ public:
     void getInfo(){
         cout<<"Child Class"<<endl;
     }
+    void hello(){
+        cout<<"Hello Child Class"<<endl;
+    }
 };
 
 int main(){
     Child c1;
-    c1.getInfo();
+    c1.hello();
     return 0;
 }
